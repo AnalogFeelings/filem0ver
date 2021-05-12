@@ -46,6 +46,7 @@ namespace FileM0ver
                 return;
             }
 
+            //Create regex pattern and check if the pattern is invalid.
             Regex fileRegex;
             try
             {
@@ -62,13 +63,14 @@ namespace FileM0ver
             IEnumerable<string> matchingFiles = Directory.EnumerateFiles(directoryBox.Text).Where(file => fileRegex.IsMatch(file));
             foreach (string singleFile in matchingFiles)
             {
-                //Absolute clusterfuck
+                //Absolute mess of code. Hold tight!
                 string cutFile = singleFile.Substring(singleFile.LastIndexOf("_") + 1).Trim(); //Remove everything leaving
                                                                                                //only "ParteX.pdf"
                 cutFile = cutFile.Substring(0, cutFile.LastIndexOf(".")).Trim();               //Removes the ".pdf"
 
                 string correspondingFolder = Path.Combine(directoryBox.Text, cutFile);
 
+                //Create the folder for that part.
                 Directory.CreateDirectory(correspondingFolder);
                 if (!Directory.Exists(correspondingFolder))
                 {
@@ -78,6 +80,7 @@ namespace FileM0ver
                     return;
                 }
 
+                //Copy or move the file to that folder (works with multiple files with the name "ParteX")
                 try
                 {
                     if (copyCheckbox.Checked)
