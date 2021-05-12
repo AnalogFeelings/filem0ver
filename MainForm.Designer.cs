@@ -29,6 +29,7 @@ namespace FileM0ver
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.regexPattern = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -36,9 +37,10 @@ namespace FileM0ver
             this.directoryBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.aboutButton = new System.Windows.Forms.Button();
+            this.copyCheckbox = new System.Windows.Forms.CheckBox();
             this.quitButton = new System.Windows.Forms.Button();
             this.orderButton = new System.Windows.Forms.Button();
-            this.copyCheckbox = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -108,6 +110,7 @@ namespace FileM0ver
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.aboutButton);
             this.groupBox2.Controls.Add(this.copyCheckbox);
             this.groupBox2.Controls.Add(this.quitButton);
             this.groupBox2.Controls.Add(this.orderButton);
@@ -118,6 +121,28 @@ namespace FileM0ver
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Actions";
+            // 
+            // aboutButton
+            // 
+            this.aboutButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aboutButton.Location = new System.Drawing.Point(171, 19);
+            this.aboutButton.Name = "aboutButton";
+            this.aboutButton.Size = new System.Drawing.Size(114, 23);
+            this.aboutButton.TabIndex = 3;
+            this.aboutButton.Text = "About FileM0ver";
+            this.aboutButton.UseVisualStyleBackColor = true;
+            this.aboutButton.Click += new System.EventHandler(this.aboutButton_Click);
+            // 
+            // copyCheckbox
+            // 
+            this.copyCheckbox.AutoSize = true;
+            this.copyCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.copyCheckbox.Location = new System.Drawing.Point(291, 23);
+            this.copyCheckbox.Name = "copyCheckbox";
+            this.copyCheckbox.Size = new System.Drawing.Size(134, 17);
+            this.copyCheckbox.TabIndex = 2;
+            this.copyCheckbox.Text = "Copy instead of move?";
+            this.copyCheckbox.UseVisualStyleBackColor = true;
             // 
             // quitButton
             // 
@@ -141,17 +166,6 @@ namespace FileM0ver
             this.orderButton.UseVisualStyleBackColor = true;
             this.orderButton.Click += new System.EventHandler(this.orderButton_Click);
             // 
-            // copyCheckbox
-            // 
-            this.copyCheckbox.AutoSize = true;
-            this.copyCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.copyCheckbox.Location = new System.Drawing.Point(171, 23);
-            this.copyCheckbox.Name = "copyCheckbox";
-            this.copyCheckbox.Size = new System.Drawing.Size(134, 17);
-            this.copyCheckbox.TabIndex = 2;
-            this.copyCheckbox.Text = "Copy instead of move?";
-            this.copyCheckbox.UseVisualStyleBackColor = true;
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,10 +174,10 @@ namespace FileM0ver
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MainForm";
-            this.ShowIcon = false;
-            this.Text = "FileM0ver";
+            this.Text = "FileM0ver v1.1";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -184,6 +198,7 @@ namespace FileM0ver
         private System.Windows.Forms.Button quitButton;
         private System.Windows.Forms.Button orderButton;
         private System.Windows.Forms.CheckBox copyCheckbox;
+        private System.Windows.Forms.Button aboutButton;
     }
 }
 
