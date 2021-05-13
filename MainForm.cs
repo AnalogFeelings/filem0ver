@@ -65,13 +65,12 @@ namespace FileM0ver
             foreach (string singleFile in matchingFiles)
             {
                 //Absolute mess of code. Hold tight!
-                string cutFile = singleFile.Substring(singleFile.LastIndexOf("_") + 1).Trim(); //Remove everything leaving
-                                                                                               //only "ParteX.pdf"
-                cutFile = cutFile.Substring(0, cutFile.LastIndexOf(".")).Trim();               //Removes the extension.
+                string extensionlessFilename = Path.GetFileNameWithoutExtension(singleFile);
+                //Remove all except "ParteX"
+                string cutFile = extensionlessFilename.Substring(extensionlessFilename.LastIndexOf("_") + 1).Trim();
 
                 string correspondingFolder = Path.Combine(directoryBox.Text, cutFile);
                 string filename = Path.GetFileName(singleFile);
-                string extensionlessFilename = Path.GetFileNameWithoutExtension(singleFile);
                 string fileExtension = Path.GetExtension(singleFile);
 
                 //Create the folder for that part.
@@ -87,19 +86,21 @@ namespace FileM0ver
                 //Copy or move the file to that folder (works with multiple files with the name "ParteX")
                 try
                 {
-                    string combinedPath = Path.Combine(correspondingFolder, Path.GetFileName(singleFile));
+                    string combinedPath = Path.Combine(correspondingFolder, filename);
                     if (copyCheckbox.Checked)
                     {
                         File.Copy(singleFile, combinedPath);
 
-                        File.Copy(Path.Combine(correspondingFolder, filename),
+                        //Make a copy of the file to follow the scenario.
+                        File.Copy(combinedPath,
                             Path.Combine(correspondingFolder, extensionlessFilename + "_copy" + fileExtension));
                     }
                     else
                     {
                         File.Move(singleFile, combinedPath);
 
-                        File.Copy(Path.Combine(correspondingFolder, filename),
+                        //Make a copy of the file to follow the scenario.
+                        File.Copy(combinedPath,
                             Path.Combine(correspondingFolder, extensionlessFilename + "_copy" + fileExtension));
                     }
                 }
