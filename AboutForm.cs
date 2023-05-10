@@ -23,7 +23,7 @@ namespace FileM0ver
         {
             this.linkLabel1.LinkVisited = true;
 
-            Process.Start("https://github.com/AestheticalZ/filem0ver");
+            Process.Start("https://github.com/AnalogFeelings/filem0ver");
         }
 
         private void closeButton_Click(object sender, EventArgs e)
